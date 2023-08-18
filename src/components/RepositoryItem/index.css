@@ -1,7 +1,7 @@
 /* Write your CSS here */
 .language-box {
   list-style-type: none;
-  box-shadow: 0px 2px 0px #bfbfbf;
+  box-shadow: 0px 2px 0px #bfbf;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -9,12 +9,18 @@
 }
 
 .image {
-  height: 40px;
-  width: 40px;
+  height: 50px;
+  width: 50px;
 }
 
 .images {
   height: 20px;
   width: 20px;
   margin-right: 5px;
+}
+
+.image-list {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }

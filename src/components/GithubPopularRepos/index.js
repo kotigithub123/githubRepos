@@ -36,7 +36,7 @@ class GithubPopularRepos extends Component {
     const {activeLanguageId} = this.state
     const url = `https://apis.ccbp.in/popular-repos?language=${activeLanguageId}`
     const response = await fetch(url)
-    if (response.ok === true) {
+    if (response.ok) {
       const data = await response.json()
       const fetchedData = data.popular_repos.map(eachOne => ({
         avatarUrl: eachOne.avatar_url,
@@ -51,8 +51,7 @@ class GithubPopularRepos extends Component {
         apiCall: apiCallProgress.success,
       })
     } else {
-      const {apiCall} = this.state
-      this.setState((apiCall: apiCallProgress.failure))
+      this.setState({apiCall: apiCallProgress.failure})
     }
   }
 
@@ -79,17 +78,17 @@ class GithubPopularRepos extends Component {
   )
 
   getLanguageItemLists = () => {
-    const {appCall} = this.state
-    switch (appCall) {
-      case appCall === apiCallProgress.success:
+    const {apiCall} = this.state
+    switch (apiCall) {
+      case apiCallProgress.success:
         return this.getLanguageItems()
-      case appCall === apiCallProgress.inprogress:
+      case apiCallProgress.inprogress:
         return (
           <div data-testid="loader">
             <Loader type="ThreeDots" color="#0284c7" height={80} width={80} />
           </div>
         )
-      case appCall === apiCallProgress.failure:
+      case apiCallProgress.failure:
         return this.getFailureview()
       default:
         return null
